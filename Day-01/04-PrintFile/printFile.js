@@ -31,11 +31,28 @@ if (!fs.existsSync(filename)){
 }
 */
 
-fs.readFile(filename, {encoding : 'utf8'}, function(err, fileContents){
+/*fs.readFile(filename, {encoding : 'utf8'}, function(err, fileContents){
 	if (err){
 		console.log('something went wrong', err);
 		return;	
 	}
 	console.log(fileContents);	
 	console.log("----------------------------- EOF ------------------------");
+});*/
+
+var stream = fs.createReadStream(filename, {encoding : 'utf8'});
+/* open, data, end, close, error */
+var readCount = 0;
+stream.on('data', function(chunk){
+	//console.log(chunk);
+	++readCount;
 });
+stream.on('end', function(){
+	console.log("-------------- EOF ---------------- " + readCount + ' - readCounts');
+});
+
+stream.pipe(process.stdout)
+/*stream.on('end', function(){
+	console.log("----------------------------- EOF ------------------------");
+});*/
+console.log('triggered stream reading');
