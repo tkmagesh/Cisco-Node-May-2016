@@ -18,7 +18,7 @@ function f4Sync(){
 	console.log('f4Sync completed');
 }
 
-function runSync(){
+module.exports.runSync = function runSync(){
 	f1Sync();
 	f2Sync();
 	f3Sync();
@@ -50,14 +50,14 @@ function f4(){
 	},3000)
 }
 
-function run(){
+module.exports.run = function run(){
 	f1();
 	f2();
 	f3();
 	f4();
 }
 
-module.exports = {
+/*module.exports = {
 	run : run,
 	runSync : runSync
-};
+};*/
