@@ -26,11 +26,13 @@
             document.getElementById("divMessages").innerHTML += '<div>' + evtArg.data + '</div>';
         }
         function onFileChangeMessageFromServer(evtArg){
-            document.getElementById("divMessages").innerHTML += '<div class="highlight">' + evtArg.data + '</div>';
+            /*document.getElementById("divMessages").innerHTML += '<div class="highlight">' + evtArg.data + '</div>';*/
+            window.location.reload();
         }  
     </script>
 </head>
 <body>
+    <h1 style="color : red">Server Sent Events</h1>
     <input type="button" value="Connect" id="btnConnect">
     <div id="divMessages"></div>
 </body>
